@@ -9,5 +9,7 @@ from hash_table import HashTable
 people = HashTable()
 
 people["Ethan"] = 21
+people["Garrett"] = 20
 
 print(people["Ethan"])
+print(people["Garrett"])

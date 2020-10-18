@@ -13,16 +13,16 @@ class HashTable:
 
     def __setitem__(self, key, value):
         self.space_used = self.space_used + 1
-        index = self.hash_func(key)
+        index = self.hash(key)
         print(index)
         self.masterArray.insert(index, value)
 
     def __getitem__(self, key):
-        index = self.hash_func(key)
+        index = self.hash(key)
         print(index)
         return self.masterArray[index]
 
-    def hash_func(self, key):
+    def hash(self, key):
         index = 0
         for i in self.split_key(key):
            index = index + ord(i)
