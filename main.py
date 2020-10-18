@@ -8,3 +8,6 @@ from hash_table import HashTable
 # Example
 people = HashTable()
 
+people["Ethan"] = 21
+
+print(people["Ethan"])
