@@ -7,10 +7,17 @@ class HashTable:
 
     def __init__(self, size = 10):
         self.size = size
-        self.data = [[] for __ in range(size)] 
+        self.data = [[] for __ in range(size)]
+        self.keylist =[]
+        self.valuelist = []
 
     def __setitem__(self, key, value):
-        self.data[self.hash(key)].append([key, value])
+        keyvalues = self.data[self.hash(key)]
+        for kv in keyvalues:
+            if kv[0] is key:
+                kv[1] = value
+                return
+        keyvalues.append([key,value])
 
     def __getitem__(self, key):
         for kv in self.data[self.hash(key)]:
@@ -18,9 +25,21 @@ class HashTable:
                 return kv[1]
         return None
 
+    def delete(self, key):
+        self.data[self.hash(key)].clear()
+
     def hash(self, key):
         return hash(key) % len(self.data)
+
+    def keys(self):
+        return self.keylist
+
+    def values(self):
+        return self.valuelist
     
+    def clear(self):
+        self.data.clear()
+        self.data = [[] for __ in range(self.size)] 
 
 
     # Was implementing a hashing function
