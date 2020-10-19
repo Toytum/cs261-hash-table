@@ -3,32 +3,42 @@
 # Your implementation should pass the tests in test_hash_table.py.
 # Ethan Weikel
 
-
 class HashTable:
 
     def __init__(self, size = 10):
         self.size = size
-        self.space_used = 0
-        self.masterArray = [None for __ in range(size)]
+        self.data = [[] for __ in range(size)] 
 
     def __setitem__(self, key, value):
-        self.space_used = self.space_used + 1
-        index = self.hash(key)
-        print(index)
-        self.masterArray.insert(index, value)
+        self.data[self.hash(key)].append([key, value])
 
     def __getitem__(self, key):
-        index = self.hash(key)
-        print(index)
-        return self.masterArray[index]
+        for kv in self.data[self.hash(key)]:
+            if kv[0] is key:
+                return kv[1]
+        return None
 
     def hash(self, key):
-        index = 0
-        for i in self.split_key(key):
-           index = index + ord(i)
-        return index % len(self.masterArray)
-
-    def split_key(self, key):
-        return [char for char in key]
+        return hash(key) % len(self.data)
     
-    pass
+
+
+    # Was implementing a hashing function
+    #     index = 0
+    #     try:
+    #         for i in self.split_key(key):
+    #             index += ord(i)
+    #         return index % (len(self.masterArray)-1)
+    #     except:
+    #         if key < self.size:
+    #             return key
+    #         elif key > self.size:
+    #             while key > self.size:
+    #                 key -= self.size
+    #             return key
+    #         else:
+    #             return 0
+
+    # def split_key(self, key):
+    #     return [char for char in key]
+

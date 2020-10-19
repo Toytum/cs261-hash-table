@@ -47,89 +47,89 @@ class TestHashTable(unittest.TestCase):
         except TypeError:
             self.fail("HashTable has no __setitem__ implementation")
 
-    def test_simple_retrieval(self):
-        h = HashTable()
-        try:
-            _ = h['foo']
-        except TypeError:
-            self.fail("HashTable has no __getitem__ implementation")
+    # def test_simple_retrieval(self):
+    #     h = HashTable()
+    #     try:
+    #         _ = h['foo']
+    #     except TypeError:
+    #         self.fail("HashTable has no __getitem__ implementation")
 
-    # def test_hash(self):
-    #     """
-    #     Hash function returns hash no greater than its size - 1.
-    #     """
-    #     h = HashTable(33)
-    #     self.assertEqual(0, h.hash(0))
-    #     self.assertEqual(32, h.hash(32))
-    #     self.assertEqual(0, h.hash(33))
-    #     self.assertEqual(1, h.hash(34))
-    #     self.assertEqual(hash("fake key") % 33, h.hash("fake key"))
+    def test_hash(self):
+        """
+        Hash function returns hash no greater than its size - 1.
+        """
+        h = HashTable(33)
+        self.assertEqual(0, h.hash(0))
+        self.assertEqual(32, h.hash(32))
+        self.assertEqual(0, h.hash(33))
+        self.assertEqual(1, h.hash(34))
+        self.assertEqual(hash("fake key") % 33, h.hash("fake key"))
 
     # """
     # Data Storage
     # """
 
-    # def test_data(self):
-    #     """
-    #     A HashTable has an internal array for storing k-v pairs.
-    #     """
-    #     h = HashTable()
-    #     self.assertEqual(list, type(h.data))
+    def test_data(self):
+        """
+        A HashTable has an internal array for storing k-v pairs.
+        """
+        h = HashTable()
+        self.assertEqual(list, type(h.data))
 
-    # def test_data_contents(self):
-    #     """
-    #     A HashTable data array contains empty lists.
-    #     """
-    #     h = HashTable(3)
-    #     expected = [ [], [], [] ]
-    #     self.assertEqual(expected, h.data)
+    def test_data_contents(self):
+        """
+        A HashTable data array contains empty lists.
+        """
+        h = HashTable(3)
+        expected = [ [], [], [] ]
+        self.assertEqual(expected, h.data)
 
     # """
     # Insertion Basics
     # """
 
-    # def test_insert_one(self):
-    #     """
-    #     Inserting a k-v pair stores it as a two-element array in the list at
-    #     the right index.
-    #     """
-    #     h = HashTable(3)
-    #     h[11] = 'bar' # 11 is the key, not an index :)
-    #     self.assertEqual([[11, 'bar']], h.data[2])
+    def test_insert_one(self):
+        """
+        Inserting a k-v pair stores it as a two-element array in the list at
+        the right index.
+        """
+        h = HashTable(3)
+        h[11] = 'bar' # 11 is the key, not an index :)
+        self.assertEqual([[11, 'bar']], h.data[2])
 
     # """
     # Retrieval Basics
     # """
 
-    # def test_retrieve_none(self):
-    #     """
-    #     Retreiving a value for non-existent key returns None.
-    #     """
-    #     h = HashTable(3)
-    #     self.assertEqual(None, h['foo'])
+    def test_retrieve_none(self):
+        """
+        Retreiving a value for non-existent key returns None.
+        """
+        h = HashTable(3)
+        self.assertEqual(None, h['foo'])
 
-    # def test_retrieve_one(self):
-    #     """
-    #     The value of an inserted k-v pair is retrievable.
-    #     """
-    #     h = HashTable(3)
-    #     h['foo'] = 'bar'
-    #     self.assertEqual('bar', h['foo'])
+    def test_retrieve_one(self):
+        """
+        The value of an inserted k-v pair is retrievable.
+        """
+        h = HashTable(3)
+        h['foo'] = 'bar'
+        self.assertEqual('bar', h['foo'])
 
     # """
     # Insertion
     # """
 
-    # def test_insert_two(self):
-    #     """
-    #     Inserting two k-v pairs stores them as two-element arrays in the list
-    #     at the right index.
-    #     """
-    #     h = HashTable(3)
-    #     h[9] = 'foo' # Using numbers as keys for visibility.
-    #     h[11] = 'bar'
-    #     self.assertEqual([[9, 'foo']], h.data[0])
-    #     self.assertEqual([[11, 'bar']], h.data[2])
+    def test_insert_two(self):
+        """
+        Inserting two k-v pairs stores them as two-element arrays in the list
+        at the right index.
+        """
+        h = HashTable(3)
+        h[9] = 'foo' # Using numbers as keys for visibility.
+        h[11] = 'bar'
+        self.assertEqual([[9, 'foo']], h.data[0])
+        self.assertEqual([[11, 'bar']], h.data[2])
 
     # def test_insert_existing(self):
     #     """

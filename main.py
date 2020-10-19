@@ -10,6 +10,6 @@ people = HashTable()
 
 people["Ethan"] = 21
 people["Garrett"] = 20
-
+print(people)
 print(people["Ethan"])
 print(people["Garrett"])
