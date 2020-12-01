@@ -15,9 +15,11 @@ class HashTable:
         keyvalues = self.data[self.hash(key)]
         for kv in keyvalues:
             if kv[0] is key:
-                kv[1] = value
+                kv[1] = value      
                 return
         keyvalues.append([key,value])
+        self.keylist.append(key)
+        self.valuelist.append(value)
 
     def __getitem__(self, key):
         for kv in self.data[self.hash(key)]:

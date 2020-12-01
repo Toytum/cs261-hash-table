@@ -183,16 +183,16 @@ class TestHashTable(unittest.TestCase):
         h = HashTable()
         self.assertEqual([], h.keys())
 
-    # def test_keys(self):
-    #     """
-    #     A HashTable can produce a list of its keys.
-    #     """
-    #     h = HashTable()
-    #     h['foo'] = 'bar'
-    #     h['baz'] = 'qux'
-    #     keys = h.keys()
-    #     keys.sort()
-    #     self.assertEqual(['baz', 'foo'], keys)
+    def test_keys(self):
+        """
+        A HashTable can produce a list of its keys.
+        """
+        h = HashTable()
+        h['foo'] = 'bar'
+        h['baz'] = 'qux'
+        keys = h.keys()
+        keys.sort()
+        self.assertEqual(['baz', 'foo'], keys)
 
 
     def test_initial_values(self):
@@ -202,16 +202,16 @@ class TestHashTable(unittest.TestCase):
         h = HashTable(3)
         self.assertEqual([], h.values())
 
-    # def test_values(self):
-    #     """
-    #     A HashTable can produce a list of its values.
-    #     """
-    #     h = HashTable()
-    #     h['foo'] = 'bar'
-    #     h['baz'] = 'qux'
-    #     values = h.values()
-    #     values.sort()
-    #     self.assertEqual(['bar', 'qux'], values)
+    def test_values(self):
+        """
+        A HashTable can produce a list of its values.
+        """
+        h = HashTable()
+        h['foo'] = 'bar'
+        h['baz'] = 'qux'
+        values = h.values()
+        values.sort()
+        self.assertEqual(['bar', 'qux'], values)
 
     """
     Time complexity
